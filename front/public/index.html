@@ -1,20 +1,64 @@
+<!-- HTML-->
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo512.png" />   
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />   
-    <title>Автобазы. Статистика</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>    
-  </body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моя Крутая Страница</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="container" id="root">
+        <h1>Добро пожаловать на мою страницу!</h1>
+
+        <h2>Автобазы</h2>
+        <div class="autobases">
+            <div class="autobase" onclick="toggleAutobaseInfo(1)">Автобаза 1</div>
+            <div class="autobase" onclick="toggleAutobaseInfo(2)">Автобаза 2</div>
+            <div class="autobase" onclick="toggleAutobaseInfo(3)">Автобаза 3</div>
+        </div>
+
+        <button class="add-car-btn" onclick="addCarCard()">Добавить автомобиль</button>
+
+        <h2>АЗС</h2>
+        <div class="stations">
+            <div class="station-card">
+                <div class="station-name">АЗС-1</div>
+                <div>Адрес: ул. Название, город</div>
+                <div>Состояние: Рабочая</div>
+                <div>Сорта бензина: АИ-92, АИ-95</div>
+                <i class="fas fa-lock"></i>
+            </div>
+            <div class="station-card">
+                <div class="station-name">АЗС-2</div>
+                <div>Адрес: ул. Название, город</div>
+                <div>Состояние: Не работает</div>
+                <div>Сорта бензина: АИ-95, АИ-98</div>
+                <i class="fas fa-lock"></i>
+            </div>
+        </div>
+
+        <h2>Список автомобилей</h2>
+        <div class="cars">
+            <div class="car-card">
+                <div class="car-info">Марка: BMW</div>
+                <div class="car-info">Модель: X5</div>
+                <div class="car-info">Год: 2022</div>
+                <i class="fas fa-trash-alt" onclick="deleteCarCard(this)"></i>
+            </div>
+            <div class="car-card">
+                <div class="car-info">Марка: Tesla</div>
+                <div class="car-info">Модель: Model 3</div>
+                <div class="car-info">Год: 2023</div>
+                <i class="fas fa-trash-alt" onclick="deleteCarCard(this)"></i>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
 </html>

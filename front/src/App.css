@@ -1,32 +1,73 @@
-.App {
-  text-align: center;
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.autobase {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.autobase {
+  cursor: pointer;
+  border: 1px solid #ccc;
+  padding: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.add-car-btn {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.stations, .cars {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Используем grid для размещения карточек по пяти в ряд */
+  gap: 10px;
+}
+
+.station-card, .car-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  position: relative;
+}
+
+.fas.fa-lock, .fas.fa-trash-alt {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  color: gray;
+  cursor: pointer;
+}
+
+.autobase:hover {
+  background-color: #f9f9f9;
+}
+
+.add-car-form {
+  margin-top: 20px;
+}
+
+.car-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.matrix-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 10px;
+}
+
+i {
+  cursor: pointer;
+  color: red;
 }
