@@ -1,26 +1,27 @@
 const RouterClass = require('express').Router
-const {checkAuth} = require('./users')
-const Automobiles = require("./automobiles.js")
-const AZS = require("./azs.js")
-const Bases = require("./bases.js")
+const automobiles = require("./automobiles.js")
+const azs = require("./azs.js")
+const bases = require("./bases.js")
 
 
-const mainRouter = new RouterClass()
-
+const router = new RouterClass()
 
 // Automobiles
-mainRouter.get('/automobiles', automobiles.getAutoList);
-mainRouter.get('/automobiles', automobiles.getAutoById);
-mainRouter.post('/automobiles', automobiles.AddAuto);
-mainRouter.put('/automobiles', automobiles.UpdateAuto);
+router.get('/automobiles', automobiles.getAutoList);
+router.get('/automobiles', automobiles.getAutoById);
+router.post('/automobiles', automobiles.AddAuto);
+router.put('/automobiles', automobiles.UpdateInfo);
 
 //АЗС
-mainRouter.get('/azs', azs.getAZSList);
-mainRouter.post('/azs', automobiles.AddAZS);
-mainRouter.put('/azs', automobiles.updateAZS);
-mainRouter.delete('/azs', automobiles.deleteAZS);
+router.get('/azs', azs.getAZSList);
+// router.post('/azs', automobiles.AddAZS);
+// router.put('/azs', automobiles.updateAZS);
+// router.delete('/azs', automobiles.deleteAZS);
+
 //Базы
-mainRouter.get('/bases', automobiles.getBase);
-mainRouter.post('/bases', automobiles.AddBase);
-mainRouter.put('/bases', automobiles.updatebase);
-mainRouter.delete('/bases', automobiles.deteleBase);
+router.get('/bases', bases.getBaseList);
+// router.post('/bases', bases.AddBase);
+// router.put('/bases', bases.updatebase);
+// router.delete('/bases', bases.deteleBase);
+
+module.exports.router = router; 
