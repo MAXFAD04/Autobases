@@ -1,12 +1,13 @@
 import React from 'react';
 
-const CarCard = ({ brand, model, year, onDelete }) => {
+const CarCard = ({ brand, model, year, autobaseNumber, onDelete, onToggleAutobaseInfo }) => {
   return (
-    <div className="car-card">
-      <div>Марка: {brand}</div>
-      <div>Модель: {model}</div>
-      <div>Год: {year}</div>
-      <i className="fas fa-trash-alt" onClick={onDelete}></i>
+    <div className="card">
+      <h3>{brand} {model}</h3>
+      <p>Year: {year}</p>
+      <p>Autobase: {autobaseNumber}</p>
+      <button onClick={() => onToggleAutobaseInfo(autobaseNumber)}>Toggle Autobase Info</button>
+
     </div>
   );
 };

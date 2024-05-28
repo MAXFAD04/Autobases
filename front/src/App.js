@@ -1,24 +1,47 @@
 import React, { useState } from 'react';
-import AutobaseCard from './AutobaseCard';
-import AddCarForm from './AddCarForm';
-import CarCard from './CarCard';
-import MatrixLayout from './MatrixLayout';
+import AutobaseCard from './components/AutobaseCard';
+import AddCarForm from './components/AddCarForm';
+import CarCard from './components/CarCard';
+import MatrixLayout from './components/MatrixLayout';
 
 const App = () => {
   const [cars, setCars] = useState([
-    { brand: 'BMW', model: 'X5', year: 2022 },
-    { brand: 'Tesla', model: 'Model 3', year: 2023 },
+    { brand: 'BMW', model: 'X5', year: 2022, autobaseNumber: 1 },
+    { brand: 'Tesla', model: 'Model 3', year: 2023, autobaseNumber: 2 },
   ]);
+
+  const [autobaseInfoVisible, setAutobaseInfoVisible] = useState(false);
+  const [selectedAutobase, setSelectedAutobase] = useState(null);
+
+  const toggleAutobaseInfo = (autobaseNumber) => {
+    const newSelectedAutobase = cars.find(car => car.autobaseNumber === autobaseNumber);
+    if(newSelectedAutobase) {
+      if(selectedAutobase && selectedAutobase.autobaseNumber === autobaseNumber) {
+        setSelectedAutobase(null);
+        setAutobaseInfoVisible(false);
+      } else {
+        setSelectedAutobase(newSelectedAutobase);
+        setAutobaseInfoVisible(true);
+      }
+    }
+  };
 
   const handleAddCar = (newCar) => {
     setCars([...cars, newCar]);
   };
-
+  
   const handleDeleteCar = (index) => {
-    const updatedCars = cars.filter((car, i) => i !== index);
+    const updatedCars = [...cars];
+    updatedCars.splice(index, 1);
     setCars(updatedCars);
   };
-
+  
+  {cars.map((car, index) => (
+    <div key={index}>
+      <p>{car.name}</p>
+      <button onClick={() => handleDeleteCar(index)}>Delete Car</button>
+    </div>
+  ))}
   return (
     <div className="container">
       <h1>Добро пожаловать на мою страницу!</h1>
@@ -26,9 +49,18 @@ const App = () => {
       <h2>Список автомобилей</h2>
       <MatrixLayout>
         {cars.map((car, index) => (
-          <CarCard key={index} {...car} onDelete={() => handleDeleteCar(index)} />
+          <CarCard 
+            key={index} 
+            {...car} 
+            onDelete={() => handleDeleteCar(index)} 
+            onToggleAutobaseInfo={toggleAutobaseInfo} 
+          />
         ))}
       </MatrixLayout>
+      
+      {autobaseInfoVisible && selectedAutobase && (
+        <AutobaseCard autobase={selectedAutobase} />
+      )}
       
       <AddCarForm onSubmit={handleAddCar} />
     </div>
