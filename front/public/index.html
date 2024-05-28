@@ -1,64 +1,19 @@
 <!-- HTML-->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Моя Крутая Страница</title>
-    <link rel="stylesheet" href="index.css">
+    <title>Менеджер автобаз</title>
+    <link rel="stylesheet" href="App.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-WskdDjIrJyEnU6t6S5I9RhpiaWf+JwMBMsa9jBVSPXvb5ehHFztoF/n3YDAVNJF5" crossorigin="anonymous">
 </head>
 
 <body>
-    <div class="container" id="root">
-        <h1>Добро пожаловать на мою страницу!</h1>
-
-        <h2>Автобазы</h2>
-        <div class="autobases">
-            <div class="autobase" onclick="toggleAutobaseInfo(1)">Автобаза 1</div>
-            <div class="autobase" onclick="toggleAutobaseInfo(2)">Автобаза 2</div>
-            <div class="autobase" onclick="toggleAutobaseInfo(3)">Автобаза 3</div>
-        </div>
-
-        <button class="add-car-btn" onclick="addCarCard()">Добавить автомобиль</button>
-
-        <h2>АЗС</h2>
-        <div class="stations">
-            <div class="station-card">
-                <div class="station-name">АЗС-1</div>
-                <div>Адрес: ул. Название, город</div>
-                <div>Состояние: Рабочая</div>
-                <div>Сорта бензина: АИ-92, АИ-95</div>
-                <i class="fas fa-lock"></i>
-            </div>
-            <div class="station-card">
-                <div class="station-name">АЗС-2</div>
-                <div>Адрес: ул. Название, город</div>
-                <div>Состояние: Не работает</div>
-                <div>Сорта бензина: АИ-95, АИ-98</div>
-                <i class="fas fa-lock"></i>
-            </div>
-        </div>
-
-        <h2>Список автомобилей</h2>
-        <div class="cars">
-            <div class="car-card">
-                <div class="car-info">Марка: BMW</div>
-                <div class="car-info">Модель: X5</div>
-                <div class="car-info">Год: 2022</div>
-                <i class="fas fa-trash-alt" onclick="deleteCarCard(this)"></i>
-            </div>
-            <div class="car-card">
-                <div class="car-info">Марка: Tesla</div>
-                <div class="car-info">Модель: Model 3</div>
-                <div class="car-info">Год: 2023</div>
-                <i class="fas fa-trash-alt" onclick="deleteCarCard(this)"></i>
-            </div>
-        </div>
-    </div>
+    <div class="container" id="root"></div>
     <script src="app.js"></script>
 </body>
 

@@ -1,50 +1,62 @@
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+.autobases {
+  background-color: black;
+  padding         : 30px 0 10px 0;
+  font-size       : 20px;
+  text-transform  : uppercase;
+  display         : flex;
+  align-items     : center;
 }
 
-.autobase {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+.autobases button {
+  border       : none;
+  padding      : 0;
+  background   : none;
+  font-size    : 16px;
+  border-right : 1px solid grey;
+  margin-left  : 15px;
+  padding-right: 10px;
+  color        : darkgoldenrod;
+}
+.autobases button:last-child {
+  border-right : none;
+}
+.autobases button:hover {
+  text-decoration: underline;
+  color          : yellowgreen;
 }
 
-.autobase {
-  cursor: pointer;
-  border: 1px solid #ccc;
-  padding: 10px;
+.autobases button.selected {
+  text-decoration: underline;
+  color          : #68a44a;
 }
 
 .add-car-btn {
-  margin-top: 10px;
-  padding: 5px 10px;
+  margin-top      : 10px;
+  padding         : 5px 10px;
   background-color: #3498db;
-  color: #fff;
-  border: none;
-  cursor: pointer;
+  color           : #fff;
+  border          : none;
+  cursor          : pointer;
 }
 
 .stations, .cars {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* Используем grid для размещения карточек по пяти в ряд */
-  gap: 10px;
+  display              : grid;
+  grid-template-columns: repeat(5, 1fr);  /* Используем grid для размещения карточек по пяти в ряд */
+  gap                  : 10px;
 }
 
 .station-card, .car-card {
-  border: 1px solid #ccc;
-  padding: 10px;
+  border  : 1px solid #ccc;
+  padding : 10px;
   position: relative;
 }
 
 .fas.fa-lock, .fas.fa-trash-alt {
   position: absolute;
-  right: 5px;
-  bottom: 5px;
-  color: gray;
-  cursor: pointer;
+  right   : 5px;
+  bottom  : 5px;
+  color   : gray;
+  cursor  : pointer;
 }
 
 .autobase:hover {
@@ -56,18 +68,13 @@
 }
 
 .car-card {
-  border: 1px solid #ccc;
+  border : 1px solid #ccc;
   padding: 10px;
-  margin: 10px 0;
+  margin : 10px 0;
 }
 
 .matrix-layout {
-  display: grid;
+  display              : grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-gap: 10px;
-}
-
-i {
-  cursor: pointer;
-  color: red;
+  grid-gap             : 10px;
 }

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import './App.css';
+import Autobases from './components/Autobases';
 import AutobaseCard from './components/AutobaseCard';
 import AddCarForm from './components/AddCarForm';
 import CarCard from './components/CarCard';
 import MatrixLayout from './components/MatrixLayout';
 
-const App = () => {
+const App = () => {  
   const [cars, setCars] = useState([
     { brand: 'BMW', model: 'X5', year: 2022, autobaseNumber: 1 },
     { brand: 'Tesla', model: 'Model 3', year: 2023, autobaseNumber: 2 },
@@ -36,33 +38,36 @@ const App = () => {
     setCars(updatedCars);
   };
   
-  {cars.map((car, index) => (
+  /*{cars.map((car, index) => (
     <div key={index}>
       <p>{car.name}</p>
       <button onClick={() => handleDeleteCar(index)}>Delete Car</button>
     </div>
-  ))}
+  ))}*/
+
+
   return (
     <div className="container">
-      <h1>Добро пожаловать на мою страницу!</h1>
+      <Autobases />
+      <section>
+        <h2>Список автомобилей</h2>
+        <MatrixLayout>
+          {cars.map((car, index) => (
+            <CarCard
+              key={index}
+              {...car}
+              onDelete={() => handleDeleteCar(index)}
+              onToggleAutobaseInfo={toggleAutobaseInfo}
+            />
+          ))}
+        </MatrixLayout>
       
-      <h2>Список автомобилей</h2>
-      <MatrixLayout>
-        {cars.map((car, index) => (
-          <CarCard 
-            key={index} 
-            {...car} 
-            onDelete={() => handleDeleteCar(index)} 
-            onToggleAutobaseInfo={toggleAutobaseInfo} 
-          />
-        ))}
-      </MatrixLayout>
+        {autobaseInfoVisible && selectedAutobase && (
+          <AutobaseCard autobase={selectedAutobase} />
+        )}
       
-      {autobaseInfoVisible && selectedAutobase && (
-        <AutobaseCard autobase={selectedAutobase} />
-      )}
-      
-      <AddCarForm onSubmit={handleAddCar} />
+        <AddCarForm onSubmit={handleAddCar} />
+      </section>
     </div>
   );
 };

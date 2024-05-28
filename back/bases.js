@@ -1,17 +1,17 @@
 // Получение списка всех автобаз
-exports.getBaseList= async (req, res) => {
-  try {
-    const { rows } = await pool.query('SELECT * FROM autobases');
+exports.getBaseList = async (req, res) => {
+  try {    
+    const { rows } = await req.pool.query('SELECT * FROM autobases');
     res.json(rows);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'An error occurred while fetching autobases' });
+    res.status(500).json({ error: error.message });
   }
 };
 
 // Создание новой автобазы
 exports.addBase= async (req, res) => {
-  const { number, address } = req.body;
+  const { number, address } = req.body;  
   try {
     const { rows } = await pool.query('INSERT INTO autobases (number, address) VALUES ($1, $2) RETURNING *', [number, address]);
     res.status(201).json(rows[0]);
