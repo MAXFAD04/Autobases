@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const Autobases = () => {
+const AutobasesComp = ({setSelectedBaseID}) => {
   let [error, setError] = useState('');
   let [autobases, setAutobases] = useState();
   let [autobase, setAutobase] = useState(0);
@@ -24,10 +24,12 @@ const Autobases = () => {
   const selectAutobase = (index) => {
     if (index === autobase) index = -1
     setAutobase(index)
+    // setSelectedBaseID(autobases[index].base_id)
   }
-  return (            
-    <header class="autobases">
+  return (
+    <>
       {error && (<h1 className='error'>Ошибка: {error}</h1>)}
+      <header class="autobases">
       <h1>Автобазы:</h1> {
         !error.length && autobases &&
         autobases.map((base, index) =>
@@ -36,8 +38,13 @@ const Autobases = () => {
           } onClick={ () => selectAutobase(index) }>Автобаза №{ base.number }</button>
         )
       }
-    </header>    
+      </header>
+      {!error.length && autobases && autobases[autobase] && (<section key={ autobase } class="section-animate">
+        <h2 style={{marginBottom: '10px'}}>Автобаза {autobases[autobase].number}</h2>
+        <div style={{ fontStyle: 'italic' }}>Адрес: {autobases[autobase].adress}</div>
+      </section>)}
+    </>
   );
 };
 
-export default Autobases;
+export default AutobasesComp;

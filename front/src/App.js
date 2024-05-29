@@ -6,7 +6,10 @@ import AddCarForm from './components/AddCarForm';
 import CarCard from './components/CarCard';
 import MatrixLayout from './components/MatrixLayout';
 
-const App = () => {  
+const App = () => {
+
+  const [selectedBaseID, setSelectedBaseID] = useState(0)
+
   const [cars, setCars] = useState([
     { brand: 'BMW', model: 'X5', year: 2022, autobaseNumber: 1 },
     { brand: 'Tesla', model: 'Model 3', year: 2023, autobaseNumber: 2 },
@@ -48,7 +51,7 @@ const App = () => {
 
   return (
     <div className="container">
-      <Autobases />
+      <Autobases setSelectedBaseID={setSelectedBaseID} />
       <section>
         <h2>Список автомобилей</h2>
         <MatrixLayout>
