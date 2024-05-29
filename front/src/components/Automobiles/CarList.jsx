@@ -48,7 +48,7 @@ const Automobiles = ({ baseid }) => {
       {error && (<div className='error'>Ошибка: {error}</div>)}
       {cars && <div className='cars-list'>
         {cars.map((car, index) => (
-          <CarCard
+          <CarCard            
             key={index}
             {...car}
             onDelete={() => handleDeleteCar(index)}

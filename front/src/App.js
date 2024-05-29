@@ -4,7 +4,7 @@ import Automibiles from './components/Automobiles/CarList.jsx';
 
 const App = () => {
 
-  const [selectedBaseID, setSelectedBaseID] = useState(0)
+  const [selectedBaseID, setSelectedBaseID] = useState(1)
   
   return (
     <div className="container">

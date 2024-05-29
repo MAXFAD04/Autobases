@@ -25,9 +25,9 @@ const AutobasesComp = ({setSelectedBaseID}) => {
   const selectAutobase = (index) => {
     if (index === autobase) index = -1
     setAutobase(index)
-    setSelectedBaseID(autobases[index].base_id)
+    setSelectedBaseID(index>=0 ? autobases[index].base_id : 0)
   }
-  
+
   return (
     <>
       {error && (<h1 className='error'>Ошибка: {error}</h1>)}
