@@ -40,8 +40,9 @@ const AutobasesComp = ({setSelectedBaseID}) => {
       }
       </header>
       {!error.length && autobases && autobases[autobase] && (<section key={ autobase } className="section-animate">
-        <h2 style={{marginBottom: '10px'}}>Автобаза {autobases[autobase].number}</h2>
+        <h2 style={{marginBottom: '10px'}}>Автобаза №{autobases[autobase].number}</h2>
         <div style={{ fontStyle: 'italic' }}>Адрес: {autobases[autobase].adress}</div>
+        <div style={{ marginTop: '10px' }}>Всего автомобилей: {autobases[autobase].automobiles_cnt}</div>
       </section>)}
     </>
   );

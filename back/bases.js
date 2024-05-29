@@ -1,7 +1,13 @@
 // Получение списка всех автобаз
 exports.getBaseList = async (req, res) => {
   try {    
-    const { rows } = await req.pool.query('SELECT * FROM autobases');
+    const { rows } = await req.pool.query(`
+      SELECT autobases.base_id, autobases.number, adress, count(automobiles.*) as automobiles_cnt
+      FROM autobases
+      LEFT JOIN automobiles on (autobases.base_id = automobiles.base_id)
+      GROUP BY autobases.base_id
+      ORDER BY autobases.number
+    `);
     res.json(rows);
   } catch (error) {
     console.error(error);
