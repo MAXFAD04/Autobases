@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
 import Autobases from './components/Autobases';
-import AutobaseCard from './components/AutobaseCard';
 import AddCarForm from './components/AddCarForm';
 import CarCard from './components/CarCard';
 import MatrixLayout from './components/MatrixLayout';
@@ -15,7 +14,6 @@ const App = () => {
     { brand: 'Tesla', model: 'Model 3', year: 2023, autobaseNumber: 2 },
   ]);
 
-  const [autobaseInfoVisible, setAutobaseInfoVisible] = useState(false);
   const [selectedAutobase, setSelectedAutobase] = useState(null);
 
   const toggleAutobaseInfo = (autobaseNumber) => {
@@ -23,10 +21,8 @@ const App = () => {
     if(newSelectedAutobase) {
       if(selectedAutobase && selectedAutobase.autobaseNumber === autobaseNumber) {
         setSelectedAutobase(null);
-        setAutobaseInfoVisible(false);
       } else {
         setSelectedAutobase(newSelectedAutobase);
-        setAutobaseInfoVisible(true);
       }
     }
   };
@@ -63,12 +59,7 @@ const App = () => {
               onToggleAutobaseInfo={toggleAutobaseInfo}
             />
           ))}
-        </MatrixLayout>
-      
-        {autobaseInfoVisible && selectedAutobase && (
-          <AutobaseCard autobase={selectedAutobase} />
-        )}
-      
+        </MatrixLayout>            
         <AddCarForm onSubmit={handleAddCar} />
       </section>
     </div>

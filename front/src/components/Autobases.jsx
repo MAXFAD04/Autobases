@@ -29,7 +29,7 @@ const AutobasesComp = ({setSelectedBaseID}) => {
   return (
     <>
       {error && (<h1 className='error'>Ошибка: {error}</h1>)}
-      <header class="autobases">
+      <header className="autobases">
       <h1>Автобазы:</h1> {
         !error.length && autobases &&
         autobases.map((base, index) =>
@@ -39,7 +39,7 @@ const AutobasesComp = ({setSelectedBaseID}) => {
         )
       }
       </header>
-      {!error.length && autobases && autobases[autobase] && (<section key={ autobase } class="section-animate">
+      {!error.length && autobases && autobases[autobase] && (<section key={ autobase } className="section-animate">
         <h2 style={{marginBottom: '10px'}}>Автобаза {autobases[autobase].number}</h2>
         <div style={{ fontStyle: 'italic' }}>Адрес: {autobases[autobase].adress}</div>
       </section>)}
