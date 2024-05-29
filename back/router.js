@@ -7,8 +7,9 @@ const bases = require("./bases.js")
 const router = new RouterClass()
 
 // Automobiles
-router.get('/automobiles', automobiles.getAutoList);
-router.get('/automobiles', automobiles.getAutoById);
+router.get('/automobiles/info', automobiles.getAutoById);
+router.get('/automobiles/list/:base_id', automobiles.getAutoList);
+router.get('/automobiles/list', automobiles.getAutoList);
 router.post('/automobiles', automobiles.AddAuto);
 router.put('/automobiles', automobiles.UpdateInfo);
 

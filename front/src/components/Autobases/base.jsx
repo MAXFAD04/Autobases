@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import './base.css';
 
 const AutobasesComp = ({setSelectedBaseID}) => {
   let [error, setError] = useState('');
@@ -24,8 +25,9 @@ const AutobasesComp = ({setSelectedBaseID}) => {
   const selectAutobase = (index) => {
     if (index === autobase) index = -1
     setAutobase(index)
-    // setSelectedBaseID(autobases[index].base_id)
+    setSelectedBaseID(autobases[index].base_id)
   }
+  
   return (
     <>
       {error && (<h1 className='error'>Ошибка: {error}</h1>)}
