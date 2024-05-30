@@ -1,19 +1,28 @@
-import React, { useState } from 'react';
-import Autobases from './components/Autobases/base.jsx';
-import Automibiles from './components/Automobiles/CarList.jsx';
-import AzsList from './components/Azs/AzsList.jsx';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 
-const App = () => {
+import Main from './pages/main.jsx'
+import Docs from './pages/docs.jsx'
+import Contacts from './pages/contacts.jsx'
 
-  const [selectedBaseID, setSelectedBaseID] = useState(1)
-  
+
+export default function App() {
   return (
-    <div className="container">
-      <Autobases setSelectedBaseID={setSelectedBaseID} />
-      <AzsList baseid={selectedBaseID} />
-      <Automibiles baseid={selectedBaseID} />
-    </div>
+    <Router>
+      <nav>
+        <Link to="/">Автобазы</Link>
+        <Link to="/docs">Документы</Link>
+        <Link to="/contacts">Контакты</Link>
+      </nav>
+      <Routes>
+        <Route exact path="/" element={<Main />} />            
+        <Route exact path="/docs" element={<Docs />} />            
+        <Route exact path="/contacts" element={<Contacts />} />            
+      </Routes>
+    </Router>
   );
-};
-
-export default App;
+}

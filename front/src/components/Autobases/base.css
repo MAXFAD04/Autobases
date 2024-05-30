@@ -6,6 +6,9 @@
   display         : flex;
   align-items     : center;
   flex-wrap       : wrap;
+  position        : sticky;
+  top             : 0;
+  z-index         : 2;
 }
 
 .autobases button {

@@ -1,0 +1,23 @@
+.page {
+  background-color: #101e2e;
+  max-width       : 950px;
+  margin          : 0 auto;
+  padding         : 1rem;
+  font-family     : 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.page h1 {
+  color      : #d6ae71;
+  font-size  : 2rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.page h2 {
+  color      : #aad671;
+  font-size: 1.2rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.page p {
+  margin-left: 1rem;
+}

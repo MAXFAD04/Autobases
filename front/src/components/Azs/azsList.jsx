@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
 import './Azs.css';
+import { useEffect, useState } from 'react';
 import AzsCard from './AzsCard.jsx';
-
 const Automobiles = ({ baseid }) => {
 
   let [error, setError] = useState('');

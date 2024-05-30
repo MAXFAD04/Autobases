@@ -2,7 +2,6 @@ const RouterClass = require('express').Router
 const bases = require("./bases.js")
 const automobiles = require('./automobiles.js')
 const Azs = require('./azs.js')
-console.log('%c⧭', 'color: #917399', Azs);
 
 const router = new RouterClass()
 

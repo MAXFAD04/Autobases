@@ -14,11 +14,31 @@ h1,h2,h3,h4 {
 
 h1 {
   font-size: 20px;
+  margin-left: 1rem;
 }
 
 h2 {
   margin-bottom: 20px;
   color        :cyan;
+}
+
+nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  padding: .5rem;
+  background-color: black;
+}
+
+nav a {
+  color:white;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color:rgb(235, 255, 86);
+  text-decoration: underline;
 }
 
 .container {

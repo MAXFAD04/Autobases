@@ -33,12 +33,12 @@ const AutobasesComp = ({setSelectedBaseID}) => {
       {error && (<h1 className='error'>Ошибка: {error}</h1>)}
       <div className="autobases">
       <h1>Автобазы:</h1> {
-        !error.length && autobases &&
-        autobases.map((base, index) =>
-          <button key={ index } className = {
-            index === autobase ? 'selected' : ''
-          } onClick={ () => selectAutobase(index) }>Автобаза №{ base.number }</button>
-        )
+          !error.length && autobases && <div>{
+            autobases.map((base, index) =>
+              <button key={index} className={
+                index === autobase ? 'selected' : ''
+              } onClick={() => selectAutobase(index)}>Автобаза №{base.number}</button>
+            )}</div>
       }
       </div>
       {!error.length && autobases && autobases[autobase] && (<section key={ autobase } className="section-animate">
