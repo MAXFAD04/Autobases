@@ -5,7 +5,7 @@ const pg = require('pg');
 const Pool = pg.Pool;
 
 const DBHOST = 'localhost'
-const DBNAME = 'autobases'
+const DBNAME = 'Autobases'
 const DBUSER = 'autobase'
 const DBPASSWORD = '1234567'
 

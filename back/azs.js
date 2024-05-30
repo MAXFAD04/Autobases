@@ -1,13 +1,31 @@
 //Получение списка всех заправок
-exports.getAZSList= async (req, res) => {
-    try {
-      const { rows } = await pool.query('SELECT * FROM azs');
-      res.json(rows);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'An error occurred while fetching gas stations' });
+exports.getAZSList = async (req, res) => {
+  try {    
+    let sql = 'SELECT * FROM contracts'
+    const params = []
+    if (req.params?.base_id && parseInt(req.params.base_id) > 0) {
+      sql += ` WHERE base_id = $1`;
+      params.push(parseInt(req.params.base_id));
     }
-  };
+    const result = await req.pool.query(sql, params);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+};
+
+exports.getAzsListByAutobaseId = async (req, res) => {
+  try {
+    const { autobaseId } = req.params;
+    let sql = 'SELECT * FROM contracts WHERE base_id = $1';
+    const result = await req.pool.query(sql, [autobaseId]);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+};
   
   // Создание новой заправки
   exports.AddAZS= async (req, res) => {

@@ -14,7 +14,8 @@ router.post('/automobiles', automobiles.AddAuto);
 router.put('/automobiles', automobiles.UpdateInfo);
 
 //АЗС
-router.get('/azs', azs.getAZSList);
+router.get('/azs/list', azs.getAZSList);
+router.get('/azs/list/:base_id', azs.getAzsListByAutobaseId);
 // router.post('/azs', automobiles.AddAZS);
 // router.put('/azs', automobiles.updateAZS);
 // router.delete('/azs', automobiles.deleteAZS);
