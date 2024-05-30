@@ -31,7 +31,7 @@ const AutobasesComp = ({setSelectedBaseID}) => {
   return (
     <>
       {error && (<h1 className='error'>Ошибка: {error}</h1>)}
-      <header className="autobases">
+      <div className="autobases">
       <h1>Автобазы:</h1> {
         !error.length && autobases &&
         autobases.map((base, index) =>
@@ -40,7 +40,7 @@ const AutobasesComp = ({setSelectedBaseID}) => {
           } onClick={ () => selectAutobase(index) }>Автобаза №{ base.number }</button>
         )
       }
-      </header>
+      </div>
       {!error.length && autobases && autobases[autobase] && (<section key={ autobase } className="section-animate">
         <h2 style={{marginBottom: '10px'}}>Автобаза №{autobases[autobase].number}</h2>
         <div style={{ fontStyle: 'italic' }}>Адрес: {autobases[autobase].adress}</div>

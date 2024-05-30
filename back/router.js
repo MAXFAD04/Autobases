@@ -1,8 +1,8 @@
 const RouterClass = require('express').Router
-const automobiles = require("./automobiles.js")
-const azs = require("./azs.js")
 const bases = require("./bases.js")
-
+const automobiles = require('./automobiles.js')
+const Azs = require('./azs.js')
+console.log('%c⧭', 'color: #917399', Azs);
 
 const router = new RouterClass()
 
@@ -14,11 +14,8 @@ router.post('/automobiles', automobiles.AddAuto);
 router.put('/automobiles', automobiles.UpdateInfo);
 
 //АЗС
-router.get('/azs/list', azs.getAZSList);
-router.get('/azs/list/:base_id', azs.getAzsListByAutobaseId);
-// router.post('/azs', automobiles.AddAZS);
-// router.put('/azs', automobiles.updateAZS);
-// router.delete('/azs', automobiles.deleteAZS);
+router.get('/azs/list/:base_id', Azs.getAzsList);
+router.get('/azs/list', Azs.getAzsList);
 
 //Базы
 router.get('/bases', bases.getBaseList);

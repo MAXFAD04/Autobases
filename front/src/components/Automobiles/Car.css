@@ -9,20 +9,34 @@
   padding: 10px;
   margin : 10px 0;
   border-radius: 5px;
-  background-color: #102e20;
+  background-color: #0b043c;
 }
 
-.carlist-animate {
-  animation: section-animate .8s cubic-bezier(0.165, 0.84, 0.5, 1.2);
+.carlist-animate:nth-child(odd) {
+  animation: carlist-animate-odd .5s cubic-bezier(0.165, 0.84, 0.5, 1.2);
+}
+.carlist-animate:nth-child(even) {
+  animation: carlist-animate-even 1s cubic-bezier(0.165, 0.84, 0.5, 1.2);
 }
 
-@keyframes carlist-animate {
+@keyframes carlist-animate-odd {
   from {
-    transform: scale(1.1);
+    transform: translateY(-20px);
     opacity: 0;
   }
   to {
-    transform: scale(1);
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes carlist-animate-even {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
     opacity: 1;
   }
 }

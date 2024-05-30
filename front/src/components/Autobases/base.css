@@ -5,6 +5,7 @@
   text-transform  : uppercase;
   display         : flex;
   align-items     : center;
+  flex-wrap       : wrap;
 }
 
 .autobases button {

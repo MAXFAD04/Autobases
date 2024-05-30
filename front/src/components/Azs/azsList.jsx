@@ -1,40 +1,46 @@
-import { useEffect, useState } from "react";
-// import './azs.css';
+import { useEffect, useState } from 'react';
+import './Azs.css';
+import AzsCard from './AzsCard.jsx';
 
-const AzsList = ({ autobaseId }) => {
-  const [azsList, setAzsList] = useState([]);
+const Automobiles = ({ baseid }) => {
+
+  let [error, setError] = useState('');
+  let [azslist, setAzsList] = useState();  
 
   useEffect(() => {
-    const fetchAzsList = async () => {
-        try {
-          const response = await fetch(`http://localhost:3001/api/azs/autobase/${autobaseId}`);
-          if (response.ok) {
-            const data = await response.json();
-            setAzsList(data);
-          } else {
-            throw new Error('Failed to fetch gas stations for the specified autobase');
-          }
-        } catch (error) {
-          console.error(error);
+    const getAzs = async () => {
+      try {
+        setError('');
+        const response = await fetch('http://localhost:3001/api/azs/list/' + (parseInt(baseid) > 0?baseid:''));
+        const data = await response.json();
+        if (data.error) setError(`<AzsList> ${data.error}`);
+        else if (data.length) {
+          setAzsList(data);
+        } else {
+          setAzsList([]);
+          setError('Контракты с АЗС не найдены');
         }
-      };
-
-    fetchAzsList();
-  }, [autobaseId]);
+      } catch (error) {
+        setError(error.message);
+      }
+    }
+    getAzs()
+  }, [baseid])
 
   return (
     <section>
-      <h2>Список АЗС по выбранной автобазе:</h2>
-      <ul>
-        {azsList.map((azs) => (
-          <li key={azs.id} className="azs-item">
-            <div className="azs-number">Номер: {azs.number}</div>
-            <div className="azs-address">Адрес: {azs.address}</div>
-          </li>
+      <h2>Список АЗС, с которыми заключены контракты {baseid}</h2>
+      {error && (<div className='error'>Ошибка: {error}</div>)}
+      {azslist && <div className='azs-list'>
+        {azslist.map((azs, index) => (
+          <AzsCard            
+            key={index}
+            {...azs}
+          />
         ))}
-      </ul>
-    </section>
-  );
-};
+      </div>}
+    </section>    
+  )
+}
 
-export default AzsList;
+export default Automobiles;

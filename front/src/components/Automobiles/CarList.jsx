@@ -7,28 +7,26 @@ const Automobiles = ({ baseid }) => {
 
   let [error, setError] = useState('');
   let [cars, setCars] = useState();
-  let [car, setCar] = useState(0);
-
-  const getCars = async () => {
-    try {
-      setError('');
-      const response = await fetch('http://localhost:3001/api/automobiles/list/' + (parseInt(baseid) > 0?baseid:''));
-      const data = await response.json();
-      if (data.error) setError(`<CarList> ${data.error}`);
-      else if (data.length) {
-        setCars(data);
-      } else {
-        setCars([]);
-        setError('Автомобили не найдены');
-      }
-    } catch (error) {
-      setError(error.message);
-    }
-  }
+  
   useEffect(() => {
-    console.log('LOAD AUTO');
-    getCars();              
-  }, [baseid])
+    const getCars = async () => {
+      try {
+        setError('');
+        const response = await fetch('http://localhost:3001/api/automobiles/list/' + (parseInt(baseid) > 0?baseid:''));
+        const data = await response.json();
+        if (data.error) setError(`<CarList> ${data.error}`);
+        else if (data.length) {
+          setCars(data);
+        } else {
+          setCars([]);
+          setError('Автомобили не найдены');
+        }
+      } catch (error) {
+        setError(error.message);
+      }
+    }
+    getCars()
+  }, [ baseid ])
 
 
   const handleAddCar = (newCar) => {

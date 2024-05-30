@@ -1,35 +1,19 @@
-.azs-list-container {
-    background-color: #101e2e;
-    padding: 20px;
-    margin: 10px 0;
-    border-radius: 5px;
-  }
-  
-  .azs-list-container h3 {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    padding: 0;
-    margin: 0;
-    font-weight: normal;
-    color: cyan;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .azs-item {
-    background-color: #102e20;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-  }
-  
-  .azs-number {
-    color: white;
-  }
-  
-  .azs-address {
-    color: white;
-  }
+.azs-list {
+  display              : grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap             : 10px;
+}
+
+.azs-card {
+  border : 1px solid #ccc;
+  padding: 10px;
+  margin : 10px 0;
+  border-radius: 5px;
+  background-color: #002c36;
+}
+
+.azs-card h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Autobases from './components/Autobases/base.jsx';
 import Automibiles from './components/Automobiles/CarList.jsx';
-import AzsList from './components/Azs/azsList.jsx';
+import AzsList from './components/Azs/AzsList.jsx';
 
 const App = () => {
 
@@ -10,7 +10,7 @@ const App = () => {
   return (
     <div className="container">
       <Autobases setSelectedBaseID={setSelectedBaseID} />
-      <AzsList autobaseId={selectedBaseID} />
+      <AzsList baseid={selectedBaseID} />
       <Automibiles baseid={selectedBaseID} />
     </div>
   );
