@@ -2,7 +2,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
+  NavLink
 } from "react-router-dom";
 
 import Main from './pages/main.jsx'
@@ -14,9 +14,9 @@ export default function App() {
   return (
     <Router>
       <nav>
-        <Link to="/">Автобазы</Link>
-        <Link to="/docs">Документы</Link>
-        <Link to="/contacts">Контакты</Link>
+        <NavLink to="/" activeClassName='active'>Автобазы</NavLink>
+        <NavLink to="/docs" activeClassName='active'>Документы</NavLink>
+        <NavLink to="/contacts" activeClassName='active'>Контакты</NavLink>
       </nav>
       <Routes>
         <Route exact path="/" element={<Main />} />        

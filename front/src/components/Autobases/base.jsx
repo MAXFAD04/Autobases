@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import './base.css';
+import trophy from './trophy.svg';
 
 const AutobasesComp = ({setSelectedBaseID}) => {
   let [error, setError] = useState('');
   let [autobases, setAutobases] = useState();
   let [autobase, setAutobase] = useState(0);
+  let [maxCars, setMaxCars] = useState(0);
 
   const getAutobases = async () => {
     try {
@@ -13,6 +15,9 @@ const AutobasesComp = ({setSelectedBaseID}) => {
       if (data.error) setError(data.error);
       else if (data.length) {
         setAutobases(data);
+        let mc = 0
+        for (const base of data) if (mc < base.automobiles_cnt) mc = base.automobiles_cnt;        
+        setMaxCars(mc)
       } else { setError('Не удалось получить список автобаз'); }
     } catch (error) {
       setError(error.message);
@@ -37,7 +42,9 @@ const AutobasesComp = ({setSelectedBaseID}) => {
             autobases.map((base, index) =>
               <button key={index} className={
                 index === autobase ? 'selected' : ''
-              } onClick={() => selectAutobase(index)}>Автобаза №{base.number} ({base.automobiles_cnt} авт.)</button>
+              } onClick={() => selectAutobase(index)}>{
+                  base.automobiles_cnt === maxCars ? (<img src={trophy} alt="Приз" title="Победитель по кол-ву авто" />) : null
+                } База №{base.number} ({base.automobiles_cnt} авт.)</button>
             )}</div>
       }
       </div>

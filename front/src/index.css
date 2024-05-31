@@ -32,12 +32,19 @@ nav {
 }
 
 nav a {
-  color:white;
+  color:rgb(188, 188, 188);
   text-decoration: none;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  text-transform: uppercase;
+  font-size: .9em;
+}
+
+.active {
+  color: #c2e165;
 }
 
 nav a:hover {
-  color:rgb(235, 255, 86);
+  color:#ebff56;
   text-decoration: underline;
 }
 

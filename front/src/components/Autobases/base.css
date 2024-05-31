@@ -19,17 +19,17 @@
   border-right : 1px solid grey;
   margin-left  : 15px;
   padding-right: 10px;
-  color        : darkgoldenrod;
+  color        : #dbaa2c;
 }
 .autobases button:last-child {
   border-right : none;
 }
 .autobases button:hover {
   text-decoration: underline;
-  color          : yellowgreen;
+  color          : #b8cd32;
 }
 
 .autobases button.selected {
   text-decoration: underline;
-  color          : #68a44a;
+  color          : #72e339;
 }
