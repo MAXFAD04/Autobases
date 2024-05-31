@@ -21,6 +21,7 @@
   border: none;
   background: none;
   color: white;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;  
 }
 
 .fuel-filter button:hover {
@@ -32,6 +33,15 @@
   padding         : 10px;
   border-radius   : 5px;
   background-color: #0b043c;
+}
+
+.car-number {
+  font-family:'Courier New', Courier, monospace;
+  font-weight: bold;
+  background-color: white;
+  color: black;
+  padding: .2em .5em;
+
 }
 
 .carlist-animate:nth-child(odd) {

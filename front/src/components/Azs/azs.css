@@ -39,6 +39,8 @@
   background-color: #510808;
   width           : 2.5em;
   text-align      : center;
+  font-family     : Verdana, Geneva, Tahoma, sans-serif;
+  font-size       : .75em;
 }
 
 .azs-fuel span:first-child{

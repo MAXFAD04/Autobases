@@ -54,6 +54,7 @@ const Automobiles = ({ baseid }) => {
         <div className='fuel-filter'>
           Фильтр:
           <div>
+            <button onClick={() => setFilterFuel('')}>Все</button>
             {fuels && fuels.length && fuels.map((f) => (
               <button onClick={() => setFilterFuel(f)}>{f}</button>
             ))}
