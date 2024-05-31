@@ -21,3 +21,33 @@
 .page p {
   margin-left: 1rem;
 }
+
+.page-animate {
+  animation: page-animate 1s cubic-bezier(0.1, 0.9, 0.5, 1.2);
+}
+.page-animate-first {
+  animation: page-animate-first .8s cubic-bezier(0.1, 0.9, 0.5, 1.2);
+}
+
+@keyframes page-animate {
+  from {
+    transform: translateX(-10%);
+    filter: blur(5px);
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes page-animate-first {
+  from {
+    transform: translateX(10%);
+    filter: blur(5px)
+  }
+  to {
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}

@@ -2,7 +2,7 @@ import './page.css';
 
 const Contacts = () => {
   return (
-    <div className="page">
+    <div className="page page-animate">
       <h1>Контакты</h1>
       <p>Муниципальное казенное учреждение «Автобаза администрации городского округа город»</p>
       <h2>Контактная информация:</h2>

@@ -2,7 +2,7 @@ import './page.css';
 
 const Docs = () => {
   return (
-    <div className="page">
+    <div className="page page-animate">
       <h1>Положение об автобазе</h1>
       <p></p>
       <h2>1 .Общее положения</h2>

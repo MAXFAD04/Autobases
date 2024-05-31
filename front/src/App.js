@@ -19,9 +19,9 @@ export default function App() {
         <Link to="/contacts">Контакты</Link>
       </nav>
       <Routes>
-        <Route exact path="/" element={<Main />} />            
-        <Route exact path="/docs" element={<Docs />} />            
-        <Route exact path="/contacts" element={<Contacts />} />            
+        <Route exact path="/" element={<Main />} />        
+        <Route exact path="/docs" element={<Docs />} />
+        <Route exact path="/contacts" element={<Contacts />} />  
       </Routes>
     </Router>
   );

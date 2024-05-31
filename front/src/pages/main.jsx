@@ -8,7 +8,7 @@ const App = () => {
   const [selectedBaseID, setSelectedBaseID] = useState(1)
   
   return (
-    <div className="container">
+    <div className="container page-animate-first">
       <Autobases setSelectedBaseID={setSelectedBaseID} />
       <AzsList baseid={selectedBaseID} />
       <Automibiles baseid={selectedBaseID} />
