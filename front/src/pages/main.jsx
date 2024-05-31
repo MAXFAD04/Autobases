@@ -12,6 +12,7 @@ const App = () => {
       <Autobases setSelectedBaseID={setSelectedBaseID} />
       <AzsList baseid={selectedBaseID} />
       <Automibiles baseid={selectedBaseID} />
+      <div className="copyright">&copy; Максим Фадеев, гр.123123, МИРЭА</div>
     </div>
   );
 };

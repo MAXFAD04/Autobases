@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import './Car.css';
 import CarCard from './CarCard.jsx';
-// import AddCarForm from './AddCarForm.jsx';
 
 const Automobiles = ({ baseid }) => {
 
@@ -40,10 +39,6 @@ const Automobiles = ({ baseid }) => {
     if (filter_fuel) return cars.filter(car=>car.fuel===filter_fuel)
     return cars
   }
-
-  const handleAddCar = (newCar) => {
-    setCars([...cars, newCar]);
-  }
   
   const handleDeleteCar = (index) => {
     const updatedCars = [...cars];
@@ -53,7 +48,7 @@ const Automobiles = ({ baseid }) => {
   
   return (
       
-    <section>
+    <section style={{borderBottom: 'none'}}>
       <h2 className='cars-header'>
         <div>Список автомобилей</div>
         <div className='fuel-filter'>
@@ -75,7 +70,6 @@ const Automobiles = ({ baseid }) => {
           />
         ))}
       </div>}
-      {/*<AddCarForm onSubmit={handleAddCar} />*/}
     </section>    
   );
 };

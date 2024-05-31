@@ -22,7 +22,7 @@ export default function App() {
         <Route exact path="/" element={<Main />} />        
         <Route exact path="/docs" element={<Docs />} />
         <Route exact path="/contacts" element={<Contacts />} />  
-      </Routes>
+      </Routes>      
     </Router>
   );
 }

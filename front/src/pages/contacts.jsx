@@ -20,6 +20,7 @@ const Contacts = () => {
       <ul>
         <li>Ремонт и техническое обслуживание автомобилей.</li>
       </ul>
+      <div className="copyright">&copy; Максим Фадеев, гр.123123, МИРЭА</div>
     </div>
   );
 };
