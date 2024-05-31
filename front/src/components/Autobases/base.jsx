@@ -37,7 +37,7 @@ const AutobasesComp = ({setSelectedBaseID}) => {
             autobases.map((base, index) =>
               <button key={index} className={
                 index === autobase ? 'selected' : ''
-              } onClick={() => selectAutobase(index)}>Автобаза №{base.number}</button>
+              } onClick={() => selectAutobase(index)}>Автобаза №{base.number} ({base.automobiles_cnt} авт.)</button>
             )}</div>
       }
       </div>

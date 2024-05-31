@@ -28,7 +28,7 @@ const Automobiles = ({ baseid }) => {
 
   return (
     <section>
-      <h2>Список АЗС, с которыми заключены контракты {baseid}</h2>
+      <h2>Список АЗС, с которыми заключены контракты</h2>
       {error && (<div className='error'>Ошибка: {error}</div>)}
       {azslist && <div className='azs-list'>
         {azslist.map((azs, index) => (

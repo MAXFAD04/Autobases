@@ -1,19 +1,46 @@
 .azs-list {
-  display              : grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-gap             : 10px;
+  display        : flex;
+  flex-wrap      : wrap;
+  grid-gap       : 10px;
+  justify-content: flex-start;
+}
+
+@media screen and (max-width: 900px) {
+  .azs-list {
+    justify-content: center;
+  }
 }
 
 .azs-card {
-  border : 1px solid #ccc;
-  padding: 10px;
-  margin : 10px 0;
-  border-radius: 5px;
+  flex            : 1 1;
+  max-width       : 280px;
+  border          : 1px solid #ccc;
+  padding         : 10px;
+  border-radius   : 5px;
   background-color: #002c36;
 }
 
+
 .azs-card h3 {
-  display: flex;
-  align-items: center;
+  display        : flex;
+  align-items    : center;
   justify-content: space-between;
+}
+
+.azs-fuel {
+  margin     : .5rem 0 0;
+  display    : flex;
+  align-items: center;
+}
+
+.azs-fuel span{
+  padding         : .5rem;
+  border          : 1px solid white;
+  background-color: #510808;
+  width           : 2.5em;
+  text-align      : center;
+}
+
+.azs-fuel span:first-child{
+  margin-left: .5rem;
 }
