@@ -1,13 +1,36 @@
+.cars-header {
+  display        : flex;
+  justify-content: space-between;
+  flex-wrap      : wrap;
+}
+
 .cars-list {
   display              : grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap             : 10px;
 }
 
+.fuel-filter {
+  display: flex;
+  gap    : 10px;
+  color  : #77cde7;
+  text-transform: capitalize;
+}
+
+.fuel-filter button {
+  border: none;
+  background: none;
+  color: white;
+}
+
+.fuel-filter button:hover {
+  text-decoration: underline;
+}
+
 .car-card {
-  border : 1px solid #ccc;
-  padding: 10px;
-  border-radius: 5px;
+  border          : 1px solid #ccc;
+  padding         : 10px;
+  border-radius   : 5px;
   background-color: #0b043c;
 }
 
@@ -21,22 +44,22 @@
 @keyframes carlist-animate-odd {
   from {
     transform: translateY(-20px);
-    opacity: 0;
+    opacity  : 0;
   }
   to {
     transform: translateY(0px);
-    opacity: 1;
+    opacity  : 1;
   }
 }
 
 @keyframes carlist-animate-even {
   from {
     transform: translateY(20px);
-    opacity: 0;
+    opacity  : 0;
   }
   to {
     transform: translateY(0px);
-    opacity: 1;
+    opacity  : 1;
   }
 }
 
