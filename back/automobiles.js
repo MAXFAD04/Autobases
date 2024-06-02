@@ -1,13 +1,35 @@
 exports.getAutoList = async (req, res) => {
   try {    
-    let sql = 'SELECT * FROM automobiles'
-    const params = []
+    let sql = 'SELECT * FROM automobiles';
+    const params = [];
     if (req.params?.base_id && parseInt(req.params.base_id) > 0) {
       sql += ` WHERE base_id  =  $1`;
-      params.push(parseInt(req.params.base_id))
+      params.push(parseInt(req.params.base_id));
     }
-    const result = await req.pool.query(sql, params);
-    res.json(result.rows);
+    let result = await req.pool.query(sql, params);
+    let cars = [];
+    if (result.rows?.length) {
+      cars = result.rows;
+      result = await req.pool.query(`
+        SELECT a.auto_id, a.fuel auto_fuel, c.azs_id, azs.fuel azs_fuel FROM automobiles a
+        INNER JOIN contracts c on (a.base_id=c.base_id)
+        INNER JOIN azs on (azs.azs_id=c.azs_id)
+        WHERE a.auto_id in (${cars.map(car => car.auto_id).join(',')})
+      `);
+      if (result.rows?.length) {
+        const car_azs = {};
+        for (const car of result.rows) {
+          if (!car_azs[car.auto_id]) car_azs[car.auto_id] = []
+          if (car.azs_fuel.includes(car.auto_fuel)) car_azs[car.auto_id].push(car.azs_id)
+        }
+        cars = cars.map(car => {
+          if (car_azs[car.auto_id]) car.azs = car_azs[car.auto_id]
+          return car
+        })
+      }
+    }
+
+    res.json(cars);
   } catch (err) {
     console.error(err);
     res.status(500).send('Internal Server Error');

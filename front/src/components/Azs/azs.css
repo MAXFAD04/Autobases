@@ -14,10 +14,16 @@
 .azs-card {
   flex            : 1 1;
   max-width       : 320px;
+  min-width       : 250px;
   border          : 1px solid #ccc;
   padding         : 10px;
   border-radius   : 5px;
   background-color: #002c36;
+}
+
+.azs-card-sel {
+  border-color: #cdc332;
+  box-shadow: 0 0 10px #cdc332;
 }
 
 

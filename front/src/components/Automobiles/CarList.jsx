@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import './Car.css';
 import CarCard from './CarCard.jsx';
 
-const Automobiles = ({ baseid }) => {
+const Automobiles = ({ baseid, setSelectedAZS }) => {
 
   let [error, setError] = useState('');
   let [cars, setCars] = useState();
   let [fuels, setFuels] = useState();
-  let [filter_fuel, setFilterFuel] = useState('');
+  let [filter_fuel, setFilterFuel] = useState('');  
   
   useEffect(() => {
     const getCars = async () => {
@@ -40,6 +40,17 @@ const Automobiles = ({ baseid }) => {
     return cars
   }
   
+  const [selAzsCarId, setSelAzsCarId] = useState(0);
+  const setSelAZS = (car_id, azs_list) => {    
+    if (selAzsCarId === car_id || !azs_list?.length) {
+      setSelAzsCarId(0)
+      setSelectedAZS([])
+    } else {
+      setSelAzsCarId(car_id)
+      setSelectedAZS(azs_list)
+    }
+  }
+
   const handleDeleteCar = (index) => {
     const updatedCars = [...cars];
     updatedCars.splice(index, 1);
@@ -55,8 +66,8 @@ const Automobiles = ({ baseid }) => {
           Фильтр:
           <div>
             <button onClick={() => setFilterFuel('')}>Все</button>
-            {fuels && fuels.length && fuels.map((f) => (
-              <button onClick={() => setFilterFuel(f)}>{f}</button>
+            {fuels && fuels.length && fuels.map((f,i) => (
+              <button onClick={() => setFilterFuel(f)} key={i}>{f}</button>
             ))}
           </div>
         </div>
@@ -67,6 +78,8 @@ const Automobiles = ({ baseid }) => {
           <CarCard            
             key={index}
             {...car}
+            setSelectedAZS={(car_id, azs) => setSelAZS(car_id, azs)}
+            selAzsCarID={selAzsCarId}
             onDelete={() => handleDeleteCar(index)}
           />
         ))}

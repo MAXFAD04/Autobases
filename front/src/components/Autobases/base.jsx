@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import './base.css';
-import trophy from './trophy.svg';
+import trophy from '../assets/trophy.svg';
 
 const AutobasesComp = ({setSelectedBaseID}) => {
   let [error, setError] = useState('');

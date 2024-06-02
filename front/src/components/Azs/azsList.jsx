@@ -1,7 +1,8 @@
 import './Azs.css';
 import { useEffect, useState } from 'react';
 import AzsCard from './AzsCard.jsx';
-const Automobiles = ({ baseid }) => {
+
+const Automobiles = ({ baseid, selectedAZS }) => {
 
   let [error, setError] = useState('');
   let [azslist, setAzsList] = useState();  
@@ -32,8 +33,9 @@ const Automobiles = ({ baseid }) => {
       {error && (<div className='error'>Ошибка: {error}</div>)}
       {azslist && <div className='azs-list'>
         {azslist.map((azs, index) => (
-          <AzsCard            
+          <AzsCard
             key={index}
+            selectedAzs= {selectedAZS}
             {...azs}
           />
         ))}

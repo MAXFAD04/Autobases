@@ -6,12 +6,13 @@ import AzsList from '../components/Azs/AzsList.jsx';
 const App = () => {
 
   const [selectedBaseID, setSelectedBaseID] = useState(1)
+  const [selectedAZS, setSelectedAZS] = useState()
   
   return (
     <div className="container page-animate-first">
       <Autobases setSelectedBaseID={setSelectedBaseID} />
-      <AzsList baseid={selectedBaseID} />
-      <Automibiles baseid={selectedBaseID} />
+      <AzsList baseid={selectedBaseID} selectedAZS={selectedAZS} />
+      <Automibiles baseid={selectedBaseID} setSelectedAZS={azs => setSelectedAZS(azs)} />
       <div className="copyright">&copy; Максим Фадеев, гр.ЭФБО-02-22, МИРЭА</div>
     </div>
   );

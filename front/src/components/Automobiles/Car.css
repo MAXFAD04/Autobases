@@ -33,6 +33,29 @@
   padding         : 10px;
   border-radius   : 5px;
   background-color: #0b043c;
+  position: relative;
+}
+
+.car-card-fuel {
+  width: 24px;
+  fill: #65dbd3;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.car-card-fuel:hover {
+  fill: green;
+  transform: scale(1.2);
+  transition: transform .2s;
+}
+
+.car-card-fuel-sel {
+  fill: yellow;
+}
+
+.car-card-fuel-error {
+  fill: red;
 }
 
 .car-number {
