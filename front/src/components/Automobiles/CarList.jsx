@@ -3,7 +3,7 @@ import './Car.css';
 import CarCard from './CarCard.jsx';
 import AddCarForm from './AddCarForm.jsx';
 
-const Automobiles = ({ baseid, setSelectedAZS }) => {
+const Automobiles = ({ baseid, setSelectedAZS, onSave, savedCar }) => {
 
   let [error, setError] = useState('');
   let [cars, setCars] = useState();
@@ -41,7 +41,7 @@ const Automobiles = ({ baseid, setSelectedAZS }) => {
       }
     }
     getCars()
-  }, [ baseid ])
+  }, [ baseid, savedCar ])
 
   const filtered_cars = () => {
     if (cars?.length) {
@@ -80,7 +80,7 @@ const Automobiles = ({ baseid, setSelectedAZS }) => {
       <h2 className='cars-header'>
         <div className="cars-header">
           Список автомобилей
-          <button onClick={() => { setShowcarform(!showcarform) }}>+</button>
+          { baseid > 0 && (<button onClick={() => { setSelcar(undefined); setShowcarform(!showcarform) }}>+</button>) }
         </div>
         <div className='filters'>
           Фильтр:
@@ -88,14 +88,14 @@ const Automobiles = ({ baseid, setSelectedAZS }) => {
             <label>топливо</label>
             <button onClick={() => setFilterFuel('')}>Все</button>
             {fuels && fuels.length && fuels.map((f,i) => (
-              <button onClick={() => setFilterFuel(f)} key={i}>{f}</button>
+              <button onClick={() => setFilterFuel(f)} key={i} style={{color: filter_fuel===f?'yellow':''}}>{f}</button>
             ))}
           </div>
           <div>
             <label>тип</label>
             <button onClick={() => setFilterType('')}>Все</button>
             {types && types.length && types.map((t,i) => (
-              <button onClick={() => setFilterType(t)} key={i}>{t}</button>
+              <button onClick={() => setFilterType(t)} key={i} style={{color: filter_type===t?'yellow':''}}>{t}</button>
             ))}
           </div>
         </div>
@@ -110,10 +110,11 @@ const Automobiles = ({ baseid, setSelectedAZS }) => {
             selAzsCarID={selAzsCarId}
             onEditCar={car_id => handleOnEditCar(car_id)}
             onDelCar={car_id => handleOnDelCar(car_id)}
+            savedCar = {savedCar}
           />
         ))}
       </div>}
-      {showcarform && <AddCarForm car={ selcar } onCloseForm={() => setShowcarform(false)} />}      
+      {showcarform && <AddCarForm car={ selcar } baseid={ baseid } onCloseForm={() => setShowcarform(false)} onSave={ car => onSave(car) } />}      
     </section>    
   );
 };

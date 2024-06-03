@@ -1,10 +1,9 @@
-import { useState } from 'react';
 import './Car.css';
 
-const CarCard = ({ auto_id, auto_firma, auto_model, auto_type, state_number, fuel, azs, selAzsCarID, setSelectedAZS, onEditCar, onDelCar }) => {
+const CarCard = ({ auto_id, auto_firma, auto_model, auto_type, state_number, fuel, azs, savedCar, selAzsCarID, setSelectedAZS, onEditCar, onDelCar }) => {
 
   return (
-    <div className="car-card carlist-animate" key={auto_id}>
+    <div className={`car-card carlist-animate ${savedCar.auto_id===auto_id?'is-updated-car':''}`} key={auto_id}>
       <h3>{auto_firma} {auto_model}</h3>
       <p>Тип: {auto_type}</p>
       <p>Номер: <span className="car-number">{state_number}</span></p>

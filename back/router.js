@@ -7,6 +7,8 @@ const router = new RouterClass()
 
 // Automobiles
 router.get('/automobiles/info', automobiles.getAutoById);
+router.get('/automobiles/autotypes', automobiles.getAutoTypes);
+router.get('/automobiles/automodels', automobiles.getAutoModels);
 router.get('/automobiles/list/:base_id', automobiles.getAutoList);
 router.get('/automobiles/list', automobiles.getAutoList);
 router.post('/automobiles', automobiles.AddAuto);

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import './base.css';
 import trophy from '../assets/trophy.svg';
 
-const AutobasesComp = ({setSelectedBaseID}) => {
+const AutobasesComp = ({setSelectedBaseID, savedCar}) => {
   let [error, setError] = useState('');
   let [autobases, setAutobases] = useState();
   let [autobase, setAutobase] = useState(0);
@@ -25,7 +25,7 @@ const AutobasesComp = ({setSelectedBaseID}) => {
   }
   useEffect(() => {
     getAutobases();              
-  }, [])
+  }, [savedCar])
 
   const selectAutobase = (index) => {
     if (index === autobase) index = -1

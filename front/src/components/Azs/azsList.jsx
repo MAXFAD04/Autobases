@@ -2,7 +2,7 @@ import './Azs.css';
 import { useEffect, useState } from 'react';
 import AzsCard from './AzsCard.jsx';
 
-const Automobiles = ({ baseid, selectedAZS }) => {
+const Automobiles = ({ baseid, selectedAZS, savedCar }) => {
 
   let [error, setError] = useState('');
   let [azslist, setAzsList] = useState();  
@@ -25,7 +25,7 @@ const Automobiles = ({ baseid, selectedAZS }) => {
       }
     }
     getAzs()
-  }, [baseid])
+  }, [baseid, savedCar])
 
   return (
     <section>

@@ -120,6 +120,11 @@
 
 }
 
+.is-updated-car {
+  border-color: #38ff46;
+  box-shadow: 0 0 10px #19be24;
+}
+
 .carlist-animate:nth-child(odd) {
   animation: carlist-animate-odd .5s cubic-bezier(0.165, 0.84, 0.5, 1.2);
 }
@@ -192,7 +197,7 @@ add-car-form h3 {
   font-size     : .8em;
 }
 
-.form-row input {
+.form-row input, .form-row select {
   flex         : 1 1;
   padding      : .5em 1em;
   border-radius: 5px;
