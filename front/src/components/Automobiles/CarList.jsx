@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './Car.css';
 import CarCard from './CarCard.jsx';
+import AddCarForm from './AddCarForm.jsx';
 
 const Automobiles = ({ baseid, setSelectedAZS }) => {
 
@@ -10,6 +11,8 @@ const Automobiles = ({ baseid, setSelectedAZS }) => {
   let [types, setTypes] = useState();
   let [filter_fuel, setFilterFuel] = useState('');  
   let [filter_type, setFilterType] = useState('');  
+  let [showcarform, setShowcarform] = useState(false);
+  let [selcar, setSelcar] = useState({});
   
   useEffect(() => {
     const getCars = async () => {
@@ -60,17 +63,25 @@ const Automobiles = ({ baseid, setSelectedAZS }) => {
     }
   }
 
-  const handleDeleteCar = (index) => {
-    const updatedCars = [...cars];
-    updatedCars.splice(index, 1);
-    setCars(updatedCars);
+  const handleOnEditCar = (auto_id) => {
+    const fcar = cars.find(car => car.auto_id === auto_id)
+    if(fcar) setSelcar(fcar)
+    setShowcarform(true)
   }
-  
+
+  const handleOnDelCar = (auto_id) => {
+    const fcar = cars.find(car => car.auto_id === auto_id)
+    console.log('edit', fcar);    
+  }
+
   return (
       
     <section style={{borderBottom: 'none'}}>
       <h2 className='cars-header'>
-        <div>Список автомобилей</div>
+        <div className="cars-header">
+          Список автомобилей
+          <button onClick={() => { setShowcarform(!showcarform) }}>+</button>
+        </div>
         <div className='filters'>
           Фильтр:
           <div>
@@ -92,15 +103,17 @@ const Automobiles = ({ baseid, setSelectedAZS }) => {
       {error && (<div className='error'>Ошибка: {error}</div>)}
       {filtered_cars() &&  <div className='cars-list'>
         {filtered_cars().map((car, index) => (
-          <CarCard            
+          <CarCard
             key={index}
             {...car}
             setSelectedAZS={(car_id, azs) => setSelAZS(car_id, azs)}
             selAzsCarID={selAzsCarId}
-            onDelete={() => handleDeleteCar(index)}
+            onEditCar={car_id => handleOnEditCar(car_id)}
+            onDelCar={car_id => handleOnDelCar(car_id)}
           />
         ))}
       </div>}
+      {showcarform && <AddCarForm car={ selcar } onCloseForm={() => setShowcarform(false)} />}      
     </section>    
   );
 };

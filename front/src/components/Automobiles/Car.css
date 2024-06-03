@@ -5,8 +5,33 @@
   align-items    : flex-end;
 }
 
-.cars-header > div:first-child {
-  margin-bottom: .5em;
+.cars-header {
+  margin-bottom: .5em;  
+  display: flex;
+  align-items: center;
+}
+
+.cars-header>button {
+  margin-left: .5em;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 1px solid white;
+  font-weight: bold;
+  color: white;
+  font-size: 1.5em;
+  transition: transform .1s;
+}
+
+.cars-header>button:hover {
+  color: yellow;
+  border-color: yellow;
+  transform: scale(1.2);
+}
+
+.cars-header>button:active {
+  color: orange;
+  border-color: orange;
+  transform: scale(1);
 }
 
 .cars-list {
@@ -124,39 +149,90 @@
   }
 }
 
-.add-car-btn {
-  margin-top      : 10px;
-  padding         : 5px 10px;
-  background-color: #3498db;
-  color           : #fff;
-  border          : none;
-  cursor          : pointer;
-}
-
-.stations, .cars {
-  display              : grid;
-  grid-template-columns: repeat(5, 1fr);  /* Используем grid для размещения карточек по пяти в ряд */
-  gap                  : 10px;
-}
-
-.station-card, .car-card {
-  border  : 1px solid #ccc;
-  padding : 10px;
-  position: relative;
-}
-
-.fas.fa-lock, .fas.fa-trash-alt {
-  position: absolute;
-  right   : 5px;
-  bottom  : 5px;
-  color   : gray;
-  cursor  : pointer;
-}
-
-.autobase:hover {
-  background-color: #f9f9f9;
-}
-
 .add-car-form {
-  margin-top: 20px;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem 2rem;
+  background-color: #4d1d45f0;
+  box-shadow: 0 0 32px white;
+  border-radius: 10px;
+  border: 1px solid white;
+  animation: modal-animate .7s cubic-bezier(0.19, 1, 0.42, 1.2);
+  display: block;
+  font-size: 1.2em;
+  width: 80%;
+  max-width: 450px;
+}
+
+@keyframes modal-animate {
+  from {
+    transform: translateX(-50%) scale(1.2);
+    opacity  : 0;
+  }
+  to {
+    transform: translateX(-50%) scale(1);
+    opacity  : 1;
+  }
+}
+
+add-car-form h3 {
+  display: block;
+}
+
+.form-row {
+  display    : flex;
+  margin     : 1rem 0;
+  align-items: center;
+}
+.form-row label {
+  flex          : 0 0 7em;
+  text-transform: uppercase;
+  font-size     : .8em;
+}
+
+.form-row input {
+  flex         : 1 1;
+  padding      : .5em 1em;
+  border-radius: 5px;
+}
+
+.form-row button {
+  font-size       : .8em;
+  text-transform  : uppercase;
+  max-width       : 10em;
+  padding         : .8em 1em;
+  align-self      : stretch;
+  font-family     : Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #290b35;
+  color           : white;
+  border-radius   : 10px;
+}
+.form-row button:hover {
+  background-color: #5d2e7c;
+}
+
+.edit-button, .del-button {
+  width: 1.2em;
+  height: 1.2em;
+  fill: #ababab;
+  transition: transform .2s;
+}
+
+.edit-button:hover, .del-button:hover {
+  fill: #fff;
+  transform: scale(1.2);
+}
+
+.edit-button {
+  position: absolute;
+  bottom: 32px;
+  right: 5px;
+}
+
+.del-button {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
 }
