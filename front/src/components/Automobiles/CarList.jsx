@@ -69,9 +69,22 @@ const Automobiles = ({ baseid, setSelectedAZS, onSave, savedCar }) => {
     setShowcarform(true)
   }
 
-  const handleOnDelCar = (auto_id) => {
-    const fcar = cars.find(car => car.auto_id === auto_id)
-    console.log('edit', fcar);    
+  const handleOnDelCar = async (auto_id) => {
+    const fcar = cars.find(car => car.auto_id === auto_id)    
+    if (fcar) {
+      setError('');
+      try {
+        const r = await fetch('http://localhost:3001/api/automobiles/' + auto_id, { method: 'DELETE' });
+        if (r.status !== 200) {
+          setError(r.statusText);
+          return
+        }
+        onSave(fcar)
+      } catch (error) {
+        console.error('%c⧭', 'color: #d90000', 'error');
+        setError(error.message);
+      }    
+    }
   }
 
   return (

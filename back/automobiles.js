@@ -116,3 +116,18 @@ exports.getAutoModels= async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 };
+
+exports.delAuto = async (req, res) => {
+  try {
+    if (req.params?.autoid) {
+      const sql = 'DELETE FROM automobiles WHERE auto_id=$1';
+      await req.pool.query(sql, [req.params.autoid]);      
+      res.json({ status: 'ok' });
+    } else {
+      res.status(403).send('No autoid provided');
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+};

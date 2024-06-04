@@ -13,6 +13,7 @@ router.get('/automobiles/list/:base_id', automobiles.getAutoList);
 router.get('/automobiles/list', automobiles.getAutoList);
 router.post('/automobiles', automobiles.AddAuto);
 router.put('/automobiles', automobiles.UpdateInfo);
+router.delete('/automobiles/:autoid', automobiles.delAuto);
 
 //АЗС
 router.get('/azs/list/:base_id', Azs.getAzsList);
