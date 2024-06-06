@@ -74,17 +74,6 @@ exports.UpdateInfo =  async (req, res) => {
   }
 };
 
-exports.DeleteAuto = async (req, res) => {
-  const car_id = req.params.car_id;
-  try {
-    await pool.query('DELETE FROM automobiles WHERE id = $1', [auto_id]);
-    res.send('Car deleted successfully');
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Internal Server Error');
-  }
-};
-
 exports.getAutoTypes = async (req, res) => {
   try {    
     let sql = 'SELECT DISTINCT auto_type FROM automobiles ORDER BY auto_type';
